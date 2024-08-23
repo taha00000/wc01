@@ -6,14 +6,14 @@
 \usepackage{hyperref}
 
 \title{Weekly Challenge 01: Discrete Maths Refresher}
-\author{CS 212 Nature of Computation\\Habib University}
+\author{CS 212 Nature of Computation\\Habib University\\Name: Taha Hunaid Ali\\ID: ta08451}
 \date{Fall 2024}
 
 \qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
 \boxedpoints
 
 
-% \printanswers % Uncomment this line
+\printanswers % Uncomment this line to print answers
 
 \begin{document}
 \maketitle
@@ -21,7 +21,7 @@
 \begin{questions}
   
 \titledquestion{It's Hero time!}
-Professor Paradox has been taken captive by Eon. In order to save him you need to find his Chrononavigator which he hid somewhere.
+Professor Paradox has been taken captive by Eon. In order to save him, you need to find his Chrononavigator which he hid somewhere.
 Lucky for you, he left clues behind to find the Chrononavigator. By using the following clues deduce where the Chrononavigator is hidden.
 \begin{itemize}
     \item If Mr.Smoothy is next to a Burger Shack, then the Chrononavigator is in the Plumber's headquarters.
@@ -31,11 +31,62 @@ Lucky for you, he left clues behind to find the Chrononavigator. By using the fo
     \item The Chrononavigator is not in the Plumber's headquarters.
 \end{itemize}
 
+\begin{solution}
+We need to deduce the location of the Chrononavigator based on the given clues.
+
+Let:
+\begin{itemize}
+    \item $P$: The Chrononavigator is in the Plumber's headquarters.
+    \item $B$: The Chrononavigator is buried under Baumann's Store.
+    \item $A$: The Chrononavigator is in the Argistix Security office.
+    \item $S$: Mr.Smoothy is next to a Burger Shack.
+    \item $E$: The tree in the front of Billion Tower is an elm.
+    \item $O$: The tree in the back of Billion Tower is an oak.
+\end{itemize}
+
+Given:
+\begin{enumerate}
+    \item $S \rightarrow P$
+    \item $\neg S \vee B \rightarrow E \wedge \neg O$
+    \item $A \rightarrow \neg O$
+    \item $\neg B \rightarrow \neg E$
+    \item $\neg P$
+\end{enumerate}
+
+From (5), we know that the Chrononavigator is \textbf{not} in the Plumber's headquarters, i.e., $\neg P$. From (1), since $P$ is false, it implies that $S$ must be false, i.e., $\neg S$.
+
+Substitute $\neg S$ in (2):
+\[
+\neg S \text{ is true } \rightarrow E \wedge \neg O \text{ must be true.}
+\]
+So, the tree in the front of Billion Tower is an elm ($E$ is true), and the tree in the back is not an oak ($\neg O$ is true).
+
+Next, from (4) $\neg B \rightarrow \neg E$. Since $E$ is true, $\neg E$ must be false, which implies $B$ is true. Therefore, the Chrononavigator is buried under Baumann's Store.
+
+Thus, the Chrononavigator is \textbf{buried under Baumann's Store}.
+\end{solution}
+
+
 \titledquestion{Over 9000!!}
 For a set $X$, $\mathcal{P}(X)$ denotes the powerset of $X$.
 Show that $ \mathcal{P}(A) \subseteq \mathcal {P}(B)$ if and only if $ A \subseteq B$.
+
 \begin{solution}
-    
+We need to prove that $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$ if and only if $A \subseteq B$.
+
+\textbf{($\Rightarrow$)} Assume $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$. 
+
+We need to show $A \subseteq B$.
+
+Take any element $x \in A$. Since $\{x\} \subseteq A$ and $A \in \mathcal{P}(A)$, it follows that $\{x\} \in \mathcal{P}(B)$. Thus, $\{x\} \subseteq B$. Therefore, $x \in B$. Since $x$ was arbitrary, $A \subseteq B$.
+
+\textbf{($\Leftarrow$)} Assume $A \subseteq B$. 
+
+We need to show $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$.
+
+Take any subset $S \in \mathcal{P}(A)$. By the definition of the powerset, $S \subseteq A$. Since $A \subseteq B$, we have $S \subseteq B$. Therefore, $S \in \mathcal{P}(B)$. Since $S$ was arbitrary, $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$.
+
+Hence, $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$ if and only if $A \subseteq B$.
 \end{solution}
 
 
@@ -45,16 +96,20 @@ coloring the graph $G$ is defined as assigning a color to each vertex of $G$ suc
 If a graph can be colored with $k$ colors we say it is $k$-colorable.
 
 Prove that a graph is bipartite if and only if its 2-colorable.
+
 \begin{solution}
+A graph $G$ is bipartite if and only if it is 2-colorable.
 
+\textbf{($\Rightarrow$)} Assume $G$ is bipartite. 
+
+By definition, a bipartite graph is one where the vertex set $V$ can be divided into two disjoint sets $V_1$ and $V_2$ such that every edge connects a vertex in $V_1$ to a vertex in $V_2$. We can color the vertices in $V_1$ with one color, say color 1, and the vertices in $V_2$ with another color, say color 2. Since no two adjacent vertices share the same color, $G$ is 2-colorable.
+
+\textbf{($\Leftarrow$)} Assume $G$ is 2-colorable. 
+
+This means we can color the vertices of $G$ with two colors such that no two adjacent vertices share the same color. Let $V_1$ be the set of vertices colored with the first color, and $V_2$ be the set of vertices colored with the second color. Clearly, every edge of $G$ connects a vertex in $V_1$ with a vertex in $V_2$. Hence, $G$ is bipartite.
+
+Therefore, a graph is bipartite if and only if it is 2-colorable.
 \end{solution}
-
- 
 
 \end{questions}
 \end{document}
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
